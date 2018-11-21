@@ -17,7 +17,7 @@
                 {{~#link-to "admin"}}Admin{{/link-to~}}
               </li>
             {{/if}}
-            <li><a {{action logout}}>Logout</a></li>
+            <li><a {{! template-lint-disable }} {{action logout}}>Logout</a></li>
           </ul>
         {{else}}
           {{#link-to "login"}}Sign in{{/link-to}}
@@ -51,7 +51,7 @@
         {{/current-user}}
         {{#menu.item}}
           {{#if session.isAuthenticated}}
-            <a {{action logout}}>Logout</a>
+            <a {{! template-lint-disable }} {{action logout}}>Logout</a>
           {{else}}
             {{#link-to "login"}}Sign in{{/link-to}}
           {{/if}}
@@ -61,7 +61,7 @@
 
     {{#b.outlet}}
       <header class="page-header {{componentCssClassName}}">
-        <a class="menu-toggle" {{action b.state.actions.toggle}}>
+        <a class="menu-toggle" {{! template-lint-disable }} {{action b.state.actions.toggle}}>
           {{fa-icon "bars"}}
         </a>
         {{yield}}
