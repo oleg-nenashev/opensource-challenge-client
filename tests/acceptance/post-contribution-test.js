@@ -1,13 +1,7 @@
-import { currentURL, visit } from '@ember/test-helpers';
-import {
-  describe,
-  it,
-  beforeEach,
-  afterEach
-} from 'mocha'
+import { currentURL, visit } from '@ember/test-helpers'
+import { afterEach, beforeEach, describe, it } from 'mocha'
+import { setupApplicationTest } from 'ember-mocha'
 import { expect } from 'chai'
-import startApp from '../helpers/start-app'
-import destroyApp from '../helpers/destroy-app'
 import {
   authenticateSession,
   invalidateSession,
@@ -15,15 +9,7 @@ import {
 import { percySnapshot } from 'ember-percy'
 
 describe('Acceptance | post contribution', function() {
-  let application
-
-  beforeEach(function() {
-    application = startApp()
-  })
-
-  afterEach(function() {
-    destroyApp(application)
-  })
+  setupApplicationTest()
 
   it('can redirects to login', async function() {
     await visit('/post-contribution')
@@ -35,13 +21,13 @@ describe('Acceptance | post contribution', function() {
     beforeEach(async function() {
       server.loadFixtures('users')
 
-      await authenticateSession(application, {
+      await authenticateSession({
         access_token: 'userid:1',
       })
     })
 
     afterEach(async function() {
-      await invalidateSession(application)
+      await invalidateSession()
     })
 
     it('can visit /post-contribution', async function() {

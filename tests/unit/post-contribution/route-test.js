@@ -3,16 +3,10 @@ import { it, describe } from 'mocha'
 import { setupTest } from 'ember-mocha'
 
 describe('Unit | Route | post contribution', function() {
-  setupTest('route:post-contribution', {
-    needs: [
-      'service:session',
-      'service:currentUser',
-      'service:currentChallenge',
-    ],
-  })
+  setupTest()
 
   it('exists', function() {
-    let route = this.subject()
+    let route = this.owner.lookup('route:post-contribution')
     expect(route).to.be.ok
   })
 })

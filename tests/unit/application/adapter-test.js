@@ -3,13 +3,11 @@ import { it, describe } from 'mocha'
 import { setupTest } from 'ember-mocha'
 
 describe('Unit | Adapter | application', function() {
-  setupTest('adapter:application', {
-    needs: ['service:session'],
-  })
+  setupTest()
 
   // Replace this with your real tests.
   it('exists', function() {
-    let adapter = this.subject()
+    let adapter = this.owner.lookup('adapter:application')
     expect(adapter).to.be.ok
   })
 })
