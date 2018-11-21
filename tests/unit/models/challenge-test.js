@@ -3,6 +3,7 @@ import { it, describe } from 'mocha'
 import { setupModelTest } from 'ember-mocha'
 
 describe('Unit | Model | challenge', function() {
+  // eslint-disable-next-line
   setupModelTest('challenge', {
     // Specify the other units that are required for this test.
     needs: ['model:contribution'],

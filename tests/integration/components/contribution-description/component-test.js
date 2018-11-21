@@ -1,10 +1,13 @@
 import { expect } from 'chai'
 import { it, describe } from 'mocha'
 import { setupRenderingTest } from 'ember-mocha'
-import { render } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers'
 import hbs from 'htmlbars-inline-precompile'
+import { initialize } from '../../../../initializers/register-showdown-extensions'
 
 describe('Integration | Component | contribution description', function() {
+  initialize()
+
   setupRenderingTest()
 
   it('renders', async function() {
