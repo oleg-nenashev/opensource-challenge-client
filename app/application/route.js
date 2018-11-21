@@ -1,24 +1,23 @@
-import Ember from 'ember'
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin'
 import LoginValidations from '../validations/login'
-
-const { Route, inject } = Ember
 
 export default Route.extend(ApplicationRouteMixin, {
   LoginValidations,
 
-  ajax: inject.service(),
-  torii: inject.service(),
-  currentUser: inject.service(),
-  socket: inject.service(),
+  ajax: service(),
+  torii: service(),
+  currentUser: service(),
+  socket: service(),
 
   beforeModel() {
     return this._loadCurrentUser()
   },
 
   afterModel() {
-    this.get('socket').on('open', () => {
-      let channel = this.get('socket').joinChannel('room:contributions')
+    this.socket.on('open', () => {
+      let channel = this.socket.joinChannel('room:contributions')
 
       channel.on('new:contribution', payload => {
         this.store.pushPayload(payload)
@@ -34,7 +33,7 @@ export default Route.extend(ApplicationRouteMixin, {
 
   async _loadCurrentUser() {
     try {
-      return this.get('currentUser').load()
+      return this.currentUser.load();
     } catch (err) {
       this.session.invalidate()
     }
@@ -42,7 +41,7 @@ export default Route.extend(ApplicationRouteMixin, {
 
   async _toriiLogin(provider) {
     try {
-      let { authorizationCode } = await this.get('torii').open(provider)
+      let { authorizationCode } = await this.torii.open(provider)
 
       return this.session.authenticate('authenticator:osc', {
         provider,

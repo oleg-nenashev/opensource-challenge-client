@@ -1,11 +1,15 @@
-import Ember from 'ember'
-import { describe, it, beforeEach, afterEach } from 'mocha'
+import { currentURL, visit } from '@ember/test-helpers';
+import $ from 'jquery';
+import {
+  describe,
+  it,
+  beforeEach,
+  afterEach
+} from 'mocha'
 import { expect } from 'chai'
 import startApp from '../helpers/start-app'
 import destroyApp from '../helpers/destroy-app'
 import { percySnapshot } from 'ember-percy'
-
-const { $ } = Ember
 
 describe('Acceptance | contributors', function() {
   let application

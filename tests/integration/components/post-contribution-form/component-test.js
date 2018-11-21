@@ -1,11 +1,11 @@
-import Ember from 'ember'
+import { click } from '@ember/test-helpers';
+import EmberObject from '@ember/object';
+import { run } from '@ember/runloop';
 import { expect } from 'chai'
 import { it, describe } from 'mocha'
 import { setupComponentTest } from 'ember-mocha'
 import hbs from 'htmlbars-inline-precompile'
 import moment from 'moment'
-
-const { run } = Ember
 
 describe('Integration | Component | post contribution form', function() {
   setupComponentTest('post-contribution-form', {
@@ -32,7 +32,7 @@ describe('Integration | Component | post contribution form', function() {
     expect(this.$('.date-field > input')).to.have.value('2016-11-21')
   })
 
-  it('clicking the cancel button triggers oncancel event', function() {
+  it('clicking the cancel button triggers oncancel event', async function() {
     let cancelled = false
 
     this.set('model', {
@@ -48,7 +48,7 @@ describe('Integration | Component | post contribution form', function() {
       {{post-contribution-form contribution=model oncancel=(action cancel)}}
     `)
 
-    this.$('button[label="Abbrechen"]').click()
+    await click('button[label="Abbrechen"]')
 
     expect(cancelled).to.be.true
   })
@@ -59,7 +59,7 @@ describe('Integration | Component | post contribution form', function() {
 
     this.set(
       'model',
-      Ember.Object.create({
+      EmberObject.create({
         user: {},
         title: 'My Contr',
         date: moment().format('YYYY-MM-DD'),
@@ -88,7 +88,7 @@ describe('Integration | Component | post contribution form', function() {
         .trigger('input'),
     )
 
-    run(() => this.$('form button[type="submit"]').click())
+    run(async () => await click('form button[type="submit"]'))
 
     expect(saved).to.be.true
     expect(changeset.get('title')).to.equal('My Contribution')
@@ -99,7 +99,7 @@ describe('Integration | Component | post contribution form', function() {
 
     this.set(
       'model',
-      Ember.Object.create({
+      EmberObject.create({
         user: {},
         title: 'My Contr',
         date: '2016-11-21',
@@ -123,7 +123,7 @@ describe('Integration | Component | post contribution form', function() {
         .trigger('input'),
     )
 
-    run(() => this.$('form button[type="submit"]').click())
+    run(async () => await click('form button[type="submit"]'))
 
     expect(saved).to.be.false
   })

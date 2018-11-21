@@ -1,10 +1,8 @@
-import Ember from 'ember'
+import EmberObject from '@ember/object';
 import { expect } from 'chai'
 import { it, describe } from 'mocha'
 import { setupComponentTest } from 'ember-mocha'
 import hbs from 'htmlbars-inline-precompile'
-
-const { Object: EmberObject } = Ember
 
 describe('Integration | Component | contribution calendar', function() {
   setupComponentTest('contribution-calendar', {

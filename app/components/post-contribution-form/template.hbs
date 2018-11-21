@@ -4,24 +4,25 @@
   {{#form-for
     changeset
     class="layout-column-flex"
-    submit=(action 'save')
-    as |f|}}
+    submit=(action "save")
+  as |f|}}
     {{f.text-field "title" label="Titel" placeholder="Titel" required=true}}
     {{f.url-field "link" label="Link" placeholder="https://www.…"}}
     {{f.textarea-field "description" label="Beschreibung (in Markdown)"
       placeholder="Beschreibe hier deinen Open Source Beitrag..."
       required=true
-      }}
+    }}
 
     {{date-field
       value = changeset.date
       change = (action "setDate" changeset)
-      }}
+    }}
 
     <div class="button-row">
       {{f.submit "Erfassen"
-        disabled=(or changeset.isInvalid changeset.isPristine changeset.isSaving)}}
-      {{f.button "Abbrechen" class="btn-link" click=(action "cancel")}}
+        disabled=(or changeset.isInvalid changeset.isPristine changeset.isSaving)
+      }}
+      {{f.button "Abbrechen" class="btn-link" click=(action oncancel)}}
     </div>
   {{/form-for}}
 

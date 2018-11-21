@@ -2,6 +2,7 @@ import PhoenixSocket from 'phoenix/services/phoenix-socket'
 
 export default PhoenixSocket.extend({
   init() {
+    this._super(...arguments)
     this.connect()
   },
   connect() {
