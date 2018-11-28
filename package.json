@@ -55,7 +55,6 @@
     "ember-hold-button": "github:topaxi/ember-hold-button",
     "ember-load-initializers": "^2.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
-    "ember-mocha": "^0.14.0",
     "ember-moment": "^7.2.0",
     "ember-percy": "^1.2.5",
     "ember-phoenix": "^1.0.0",
@@ -69,7 +68,7 @@
     "ember-service-worker-index": "^0.6.3",
     "ember-service-worker-update-notify": "^1.0.1",
     "ember-simple-auth": "^1.2.0-beta.1",
-    "ember-source": "~3.5.0",
+    "ember-source": "^3.5.1",
     "eslint-plugin-ember": "^6.0.1",
     "liquid-fire": "^0.29.5",
     "loader.js": "^4.7.0",
@@ -78,10 +77,15 @@
     "torii": "^0.10.1",
     "xss": "^1.0.3"
   },
+  "resolutions": {
+    "ember-mocha": "0.14.0"
+  },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
   },
   "ember-addon": {
-    "paths": ["lib/admin"]
+    "paths": [
+      "lib/admin"
+    ]
   }
 }

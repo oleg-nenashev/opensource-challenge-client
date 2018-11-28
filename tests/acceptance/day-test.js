@@ -1,14 +1,15 @@
 import { currentURL, visit } from '@ember/test-helpers'
 import { describe, it } from 'mocha'
 import { setupApplicationTest } from 'ember-mocha'
+import setupMirage from 'ember-cli-mirage/test-support/setup-mirage'
 import { expect } from 'chai'
 import { percySnapshot } from 'ember-percy'
 
-describe('Acceptance | day', function() {
-  setupApplicationTest()
+describe('Acceptance | day', function(hooks) {
+  setupMirage(setupApplicationTest(hooks))
 
   it('can visit /day/2015-12-06', async function() {
-    server.loadFixtures('challenges', 'users', 'contributions')
+    this.server.loadFixtures('challenges', 'users', 'contributions')
 
     await visit('/day/2015-12-06')
 

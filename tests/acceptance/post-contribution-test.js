@@ -1,17 +1,18 @@
 import { currentURL, visit } from '@ember/test-helpers'
 import { afterEach, beforeEach, describe, it } from 'mocha'
 import { setupApplicationTest } from 'ember-mocha'
+import setupMirage from 'ember-cli-mirage/test-support/setup-mirage'
 import { expect } from 'chai'
 import {
   authenticateSession,
   invalidateSession,
-} from 'opensource-challenge-client/tests/helpers/ember-simple-auth'
+} from 'ember-simple-auth/test-support'
 import { percySnapshot } from 'ember-percy'
 
-describe('Acceptance | post contribution', function() {
-  setupApplicationTest()
+describe('Acceptance | post contribution', function(hooks) {
+  setupMirage(setupApplicationTest(hooks))
 
-  it('can redirects to login', async function() {
+  it('should redirect to login', async function() {
     await visit('/post-contribution')
 
     expect(currentURL()).to.equal('/login')
@@ -19,7 +20,7 @@ describe('Acceptance | post contribution', function() {
 
   describe('Logged in', function() {
     beforeEach(async function() {
-      server.loadFixtures('users')
+      this.server.loadFixtures('users')
 
       await authenticateSession({
         access_token: 'userid:1',
@@ -31,7 +32,7 @@ describe('Acceptance | post contribution', function() {
     })
 
     it('can visit /post-contribution', async function() {
-      server.loadFixtures('challenges')
+      this.server.loadFixtures('challenges')
       await visit('/post-contribution')
 
       percySnapshot('/post-contribution')

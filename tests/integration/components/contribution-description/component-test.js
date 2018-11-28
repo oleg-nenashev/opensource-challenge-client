@@ -5,10 +5,10 @@ import { render } from '@ember/test-helpers'
 import hbs from 'htmlbars-inline-precompile'
 import { initialize } from '../../../../initializers/register-showdown-extensions'
 
-describe('Integration | Component | contribution description', function() {
+describe('Integration | Component | contribution description', function(hooks) {
   initialize()
 
-  setupRenderingTest()
+  setupRenderingTest(hooks)
 
   it('renders', async function() {
     // Set any properties with this.set('myProperty', 'value');

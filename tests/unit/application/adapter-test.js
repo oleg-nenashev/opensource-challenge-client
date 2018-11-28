@@ -2,8 +2,8 @@ import { expect } from 'chai'
 import { it, describe } from 'mocha'
 import { setupTest } from 'ember-mocha'
 
-describe('Unit | Adapter | application', function() {
-  setupTest()
+describe('Unit | Adapter | application', function(hooks) {
+  setupTest(hooks)
 
   // Replace this with your real tests.
   it('exists', function() {

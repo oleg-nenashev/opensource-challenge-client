@@ -6,9 +6,9 @@
       {{f.submit "Login"}}
     {{/form-for--}}
     <p class="text-center">
-      {{#async-button class="btn-primary" action=(route-action "loginWithGithub")}}
+      <button class="btn-primary" onclick={{route-action "loginWithGithub"}}>
         {{fa-icon "github"}} Login with Github
-      {{/async-button}}
+      </button>
     </p>
   </div>
 </div>

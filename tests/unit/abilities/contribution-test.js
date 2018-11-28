@@ -3,8 +3,8 @@ import { expect } from 'chai'
 import { it, describe } from 'mocha'
 import { setupTest } from 'ember-mocha'
 
-describe('contribution Ability', function() {
-  setupTest()
+describe('contribution Ability', function(hooks) {
+  setupTest(hooks)
 
   // Replace this with your real tests.
   it('exists', function() {

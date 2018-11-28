@@ -1,14 +1,14 @@
-import { click, render } from '@ember/test-helpers';
-import EmberObject from '@ember/object';
-import { run } from '@ember/runloop';
+import { click, render } from '@ember/test-helpers'
+import EmberObject from '@ember/object'
+import { run } from '@ember/runloop'
 import { expect } from 'chai'
 import { it, describe } from 'mocha'
 import { setupRenderingTest } from 'ember-mocha'
 import hbs from 'htmlbars-inline-precompile'
 import moment from 'moment'
 
-describe('Integration | Component | post contribution form', function() {
-  setupRenderingTest()
+describe('Integration | Component | post contribution form', function(hooks) {
+  setupRenderingTest(hooks)
 
   it('prefilled form', async function() {
     this.set('model', {

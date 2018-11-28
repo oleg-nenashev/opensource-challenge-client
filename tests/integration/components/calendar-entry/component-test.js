@@ -1,11 +1,11 @@
 import { expect } from 'chai'
 import { setupRenderingTest } from 'ember-mocha'
-import { render } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers'
 import { describe, it } from 'mocha'
 import hbs from 'htmlbars-inline-precompile'
 
-describe('Integration | Component | calendar entry', function() {
-  setupRenderingTest()
+describe('Integration | Component | calendar entry', function(hooks) {
+  setupRenderingTest(hooks)
 
   it('renders', async function() {
     await render(hbs`{{calendar-entry}}`)
