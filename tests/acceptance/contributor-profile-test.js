@@ -9,7 +9,7 @@ describe('Acceptance | contributor profile', function(hooks) {
   setupMirage(setupApplicationTest(hooks))
 
   it('can visit /contributors/2', async function() {
-    server.loadFixtures('challenges', 'users', 'contributions')
+    this.server.loadFixtures('challenges', 'users', 'contributions')
 
     await visit('/contributors/2')
 
