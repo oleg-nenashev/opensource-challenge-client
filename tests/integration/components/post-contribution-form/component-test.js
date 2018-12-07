@@ -86,7 +86,7 @@ describe('Integration | Component | post contribution form', function(hooks) {
         .trigger('input'),
     )
 
-    run(async () => await click('form button[type="submit"]'))
+    await click('form button[type="submit"]')
 
     expect(saved).to.be.true
     expect(changeset.get('title')).to.equal('My Contribution')
